@@ -1,0 +1,76 @@
+quizzes = {
+    1: {
+        "nombre": "Quiz Gamer",
+        "preguntas": [
+            "¿Juegas videojuegos seguido?",
+            "¿Prefieres singleplayer?",
+            "¿Te frustras al perder?",
+            "¿Te gustan los desafíos difíciles?",
+            "¿Te vicias muchas horas?"
+        ],
+        "resultados": [
+            (1, "Eres un jugador casual"),
+            (3, "Jugador competitivo"),
+            (5, "Tryhard")
+        ]
+    },
+    2: {
+        "nombre": "Quiz de Personalidad",
+        "preguntas": [
+            "¿Te gusta dormir siesta?",
+            "¿Prefieres quedarte en casa antes que salir?",
+            "¿Te estresas fácil?",
+            "¿Te gusta aprender cosas nuevas?",
+            "¿Te ríes de memes malos?"
+        ],
+        "resultados": [
+            (1, "NPC"),
+            (3, "Chill"),
+            (5, "Introvertido")
+        ]
+    },
+    3: {
+        "nombre": "Quiz Random",
+        "preguntas": [
+            "¿Te gusta la pizza?",
+            "¿Tomas agua seguido?",
+            "¿Dormís más de 6 horas?",
+            "¿Escuchas música todos los días?",
+            "¿Estás leyendo esto?"
+        ],
+        "resultados": [
+            (1, "Sospechoso"),
+            (3, "NPC"),
+            (5, "Ser humano funcional")
+        ]
+    }
+}
+juego = "si"
+while juego == "si":
+    print("Quiz time!")
+    print("1: Gamer | 2: Personalidad | 3: Random")
+
+    choice = int(input("Ingresa el número aquí: "))
+    puntaje = 0
+
+    quiz = quizzes[choice]
+
+    for pregunta in quiz["preguntas"]:
+        respuesta = input(pregunta).lower()
+        if respuesta == "si":
+            puntaje += 1
+
+    for limite, resultado in quiz["resultados"]:
+        if puntaje <= limite:
+            print("Tu resultado:", resultado)
+            break
+
+    print("1: Seguir jugando | 2: Créditos | 3: Salir")
+    op1 = input("Ingrese el número aquí: ")
+    if op1 == "1":
+        juego = input("¿Continuar? (si/no) ")
+    elif op1 == "2":
+        print("Créditos a @brtycc (yo)")
+        break
+    elif op1 == "3":
+        break
